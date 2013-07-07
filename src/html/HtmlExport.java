@@ -25,8 +25,7 @@ public class HtmlExport {
 			while (set.next()) {
 				writer.write("<tr><td align=center valign=middle><img height=150 src=\""
 						+ set.getString("posterurl")
-						+ "\"</img>"
-						+ "</td><td><h1>"
+						+ "\"</td><td><h1>"
 						+ set.getString("title")
 						+ "</h1>"
 						+ "<p>"

@@ -1,0 +1,40 @@
+<html>
+
+<head>
+
+<link href="../style.css" rel="stylesheet">
+<script src="script.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+<title>
+Profiler Konfiguration
+</title>
+
+</head>
+
+<body onload="printTables();">
+
+<h1>Bestehende Tabellen</h1>
+<div id="configtable">
+
+</div>
+
+<hr>
+<h1>Neue Tabelle</h1>
+<form name="categoryform">
+	<table border=0>
+	<tr><td style="text-align:right;">
+		<p>Name der neuen Tabelle:
+	</td><td>
+		<input type="text" name="tablename">
+	</td><td style="text-align:center;">
+		<button type="button" name="createtable" onclick="createTable();">Tabelle erstellen</button>
+	</td></tr>
+	</table>
+</form>
+
+<hr>
+
+</body>
+
+</html>
