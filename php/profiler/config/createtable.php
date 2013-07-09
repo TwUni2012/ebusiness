@@ -16,7 +16,15 @@
 
 		if (mysqli_query($con,$sql))
 		{
-			echo printTables($con);
+			//uservalues updaten, spalte mit namen neuer tabelle einfügen
+			if (mysqli_query($con,"ALTER TABLE uservalues ADD history_$table DOUBLE"))
+			{
+				echo printTables($con);
+			}
+			else
+			{
+				echo "Error creating table: " . mysqli_error($con);
+			}
 		}
 		else
 		{

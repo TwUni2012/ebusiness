@@ -16,7 +16,14 @@
 
 		if (mysqli_query($con,$sql))
 		{
-			echo printTables($con);
+			if (mysqli_query($con,"ALTER TABLE uservalues DROP history_".$table))
+			{
+				echo printTables($con);
+			}
+			else
+			{
+				echo "Error creating table: " . mysqli_error($con);
+			}
 		}
 		else
 		{
