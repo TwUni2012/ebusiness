@@ -182,7 +182,8 @@
 					for($n=-1;$n<$index;$n++){
 						mysqli_fetch_array($colnames);
 					}
-					$json = $json."\"".$names[$i]."\":\" ".$index." ".mysqli_fetch_array($colnames)[0]."\"";
+					$colname = mysqli_fetch_array($colnames);
+					$json = $json."\"".$names[$i]."\":\" ".$index." ".$colname[0]."\"";
 					if($i < count($values)-1){
 						$json = $json.",";
 					}

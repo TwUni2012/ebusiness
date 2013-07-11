@@ -29,7 +29,12 @@
 			while($row = mysqli_fetch_array($rows)){
 				$out = $out."<tr>";
 				for($i=0;$i<($cols = count($row)/2);$i++){
-					$out = $out."<td>".$row[$i]."</td>";
+					if($i === 0){
+						$out = $out."<td><a href=\"../graph/printgraphs.php?userid=".$row[$i]."\">".$row[$i]."</a></td>";
+					}
+					else{
+						$out = $out."<td>".$row[$i]."</td>";
+					}
 				}
 				$out = $out."</tr>";
 				$n = $n+1;

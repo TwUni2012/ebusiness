@@ -48,10 +48,10 @@
 			while($row = mysqli_fetch_array($rows)){
 				$out = $out."<td><button type=\"button\" style=\"background:#f00\" onclick=\"deleteCol('".$table."','".$row[0]."');\">X</button></td>";
 			}
-			$out = $out."<td style=\"text-align:left;\"></td></tr></table><br><table><tr><td><input type=\"submit\" value=\"Tabelle speichern\"></td><td><button type=\"button\" onclick=\"deleteTable('".$table."');\">Tabelle l&ouml;schen</button></td></tr></table></form>";
+			$out = $out."<td style=\"text-align:left;\"></td></tr></table><br><table><tr><td><input type=\"submit\" value=\"Save Table\"></td><td><button type=\"button\" onclick=\"deleteTable('".$table."');\">Delete Table</button></td></tr></table></form>";
 			
-			$out = $out."<form name=\"table_".$table."_form\"><table><tr><td style=\"text-align:right;\"><p>Neue Kategorie (Spalte):</td><td><input type=\"text\" class=\"inputcategory\" name=\"newcategory\"></td><td style=\"text-align:center;\"><button type=\"button\" name=\"addaction\" onclick=\"addCategory('table_".$table."_form','".$table."',".$t.");\">Hinzuf&uuml;gen</button></td></tr>";
-			$out = $out."<tr><td style=\"text-align:right;\"><p>Neue Useraktion (Zeile):</td><td><input class=\"inputuseraction\" type=\"text\" name=\"newaction\"></td><td style=\"text-align:center;\"><button type=\"button\" name=\"addaction\" onclick=\"addAction('table_".$table."_form','".$table."',".$t.");\">Hinzuf&uuml;gen</button></td></tr></table></form>";
+			$out = $out."<form name=\"table_".$table."_form\"><table><tr><td style=\"text-align:right;\"><p>New Category (Column):</td><td><input type=\"text\" class=\"inputcategory\" name=\"newcategory\"></td><td style=\"text-align:center;\"><button type=\"button\" name=\"addaction\" onclick=\"addCategory('table_".$table."_form','".$table."',".$t.");\">Add</button></td></tr>";
+			$out = $out."<tr><td style=\"text-align:right;\"><p>New User Action (Row):</td><td><input class=\"inputuseraction\" type=\"text\" name=\"newaction\"></td><td style=\"text-align:center;\"><button type=\"button\" name=\"addaction\" onclick=\"addAction('table_".$table."_form','".$table."',".$t.");\">Add</button></td></tr></table></form>";
 			
 			echo $out;
 		}
