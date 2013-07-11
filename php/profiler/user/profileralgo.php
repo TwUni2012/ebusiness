@@ -12,10 +12,10 @@
 		if($connection = loadConnection())
 		{
 			$con = mysqli_connect("localhost",$connection[1],$connection[2],$connection[0]);
-			if (mysqli_connect_errno())
-			{
-				echo "Failed to connect to MySQL: " . mysqli_connect_error();
-			}
+			// if (mysqli_connect_errno())
+			// {
+				// echo "Failed to connect to MySQL: " . mysqli_connect_error();
+			// }
 
 			if ($colq = mysqli_query($con,"DESCRIBE uservalues"))
 			{
@@ -135,10 +135,10 @@
 						//echo " = ".$middlevalues[$i]." | ";
 					}
 				}
-				else
-				{
-					echo "ERROR: " . mysqli_error($con);
-				}
+				// else
+				// {
+					// echo "ERROR: " . mysqli_error($con);
+				// }
 				
 				//neues profil in die tabelle einfügen
 				$sql = "INSERT INTO uservalues VALUES('".$userid."',NOW(),'".$_GET["action"]."'";
@@ -152,17 +152,46 @@
 				
 				if(mysqli_query($con,$sql))
 				{
-					echo printTables($con);
+					echo createJSON($con,$middlevalues,$cols);
+//					echo printTables($con);
 				}
-				else
-				{
-					echo "ERROR: " . mysqli_error($con);
-				}
+				// else
+				// {
+					// echo "ERROR: " . mysqli_error($con);
+				// }
 			}
-			else
-			{
-				echo "ERROR: " . mysqli_error($con);
+			// else
+			// {
+				// echo "ERROR: " . mysqli_error($con);
+			// }
+		}
+	}
+	
+	function createJSON($con,$values,$names){
+		$json = "{";
+
+		if(count($values) === count($names))
+		{
+			for($i=0; $i<count($values); $i++){
+				//werte zum passenden Index runden
+				$index = intval(round($values[$i],0,PHP_ROUND_HALF_UP));
+				//entsprechenden spaltennamen ins json-objekt eintragen
+				if($colnames = mysqli_query($con,"DESCRIBE ".$names[$i]))
+				{
+					//alle zeilen bis zum index verwerfen
+					for($n=-1;$n<$index;$n++){
+						mysqli_fetch_array($colnames);
+					}
+					$json = $json."\"".$names[$i]."\":\" ".$index." ".mysqli_fetch_array($colnames)[0]."\"";
+					if($i < count($values)-1){
+						$json = $json.",";
+					}
+				}
 			}
 		}
+		
+		$json = $json."}";
+		
+		return $json;
 	}
 ?>
