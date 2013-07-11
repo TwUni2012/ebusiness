@@ -12,7 +12,7 @@
 			$rows = mysqli_query($con,"DESCRIBE ".$table);
 			
 			$out = "<h2>".$table."</h2><form class=\"tabledata\" id=\"table_".$table."_data\" action=\"savetable.php\" method=\"post\"><table><tr>";
-			
+						
 			//tabellenkopf
 			
 			while($row = mysqli_fetch_array($rows)){
@@ -21,7 +21,8 @@
 			$out = $out."</tr>";
 			
 			//tabelleninhalt
-			$rows = mysqli_query($con,"SELECT * FROM ".$table." ORDER BY userid,timestamp");
+			$sql = "SELECT * FROM ".$table." ORDER BY userid,timestamp";
+			$rows = mysqli_query($con,$sql);
 			
 			$n = 0;
 			$cols = 0;

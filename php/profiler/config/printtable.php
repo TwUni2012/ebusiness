@@ -1,15 +1,18 @@
 <?php
 
 	include 'print.php';
+	include '../loadconnection.php';
 
-	$con = mysqli_connect("localhost","testuser","testpw","configtest");
-	if(!mysqli_connect_errno())
+	if($connection = loadConnection())
 	{
-		echo printTables($con);
+		$con = mysqli_connect("localhost",$connection[1],$connection[2],$connection[0]);
+		if(!mysqli_connect_errno())
+		{
+			echo printTables($con);
+		}
+		else
+		{
+			echo "ERROR";
+		}
 	}
-	else
-	{
-		echo "ERROR";
-	}
-
 ?>

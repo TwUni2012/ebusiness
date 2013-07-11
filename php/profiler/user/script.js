@@ -28,7 +28,7 @@ function sendAjaxGetRequest(request){
 	ajax.send(null);
 }
 
-function printTables() {
+function printTables(showall) {
 	
 	sendAjaxGetRequest("printtable.php");
 }

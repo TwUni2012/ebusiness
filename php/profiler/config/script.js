@@ -70,8 +70,7 @@ function deleteCol(table,col){
 		sendAjaxGetRequest("deletecol.php?tablename="+table+"&col="+col);
 }
 
-function printTables() {
-	
+function printTables(showall) {
 	sendAjaxGetRequest("printtable.php");
 }
 
